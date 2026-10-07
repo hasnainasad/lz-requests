@@ -1,0 +1,16 @@
+apiVersion: lz.demo/v1
+kind: AzureSubscriptionRequest
+metadata:
+  name: range-demo-002
+spec:
+  applicationName: range-pricing
+  businessUnit: Range
+  environment: dev
+  ownerEmail: hasnain.asad@gmail.com
+  costCentre: CC-2100
+  justification: "Pricing tool for seasonal ranges"
+  targetManagementGroup: mg-lz-corp
+  region: swedencentral
+  dataClassification: Internal
+  connectivity: internal
+  estimatedMonthlySpend: 150
