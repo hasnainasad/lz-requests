@@ -1,0 +1,28 @@
+name: Vend subscription (dry run)
+
+on:
+  push:
+    branches: [main]
+    paths: ["requests/**"]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  vend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - run: pip install pyyaml
+      - run: python3 scripts/validate.py
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - run: az account show --query "{subscription:name, loggedInAs:user.name}" -o table
+      - run: az group show --name rg-lz-vending --query "{name:name, location:location}" -o table
+      - run: python3 scripts/vend_dry_run.py $(git diff --name-only HEAD~1 HEAD -- 'requests/*/request.yaml')
