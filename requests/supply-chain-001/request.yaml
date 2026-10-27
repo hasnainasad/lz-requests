@@ -1,0 +1,16 @@
+apiVersion: lz.demo/v1
+kind: AzureSubscriptionRequest
+metadata:
+  name: supply-chain-001
+spec:
+  applicationName: stock-tracker
+  businessUnit: Supply Chain
+  environment: dev
+  ownerEmail: abc.def@example.com
+  costCentre: CC-2100
+  justification: "Track stock levels across warehouses"
+  targetManagementGroup: mg-lz-corp
+  region: swedencentral
+  dataClassification: Internal
+  connectivity: internal
+  estimatedMonthlySpend: 100
