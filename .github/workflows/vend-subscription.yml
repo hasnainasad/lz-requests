@@ -25,4 +25,4 @@ jobs:
           subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
       - run: az account show --query "{subscription:name, loggedInAs:user.name}" -o table
       - run: az group show --name rg-lz-vending --query "{name:name, location:location}" -o table
-      - run: python3 scripts/vend_dry_run.py $(git diff --name-only HEAD~1 HEAD -- 'requests/*/request.yaml')
+      - run: python3 scripts/vend_dry_run.py $(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'requests/*/request.yaml')
