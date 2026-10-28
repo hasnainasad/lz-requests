@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: sub-fin-test-004
+  title: Azure subscription sub-fin-test-004
+  description: Budget planning tool for Finance
+  tags:
+  - azure-subscription
+  - dev
+  annotations:
+    lz.platform/status: vended (dry run)
+    lz.platform/management-group: mg-lz-corp
+    lz.platform/region: swedencentral
+    lz.platform/cost-centre: CC-2200
+    lz.platform/owner-email: fin.owner@example.com
+  links:
+  - url: https://github.com/hasnainasad/lz-requests/blob/main/requests/fin-test-004/request.yaml
+    title: Request file
+spec:
+  type: azure-subscription
+  owner: group:default/finance
