@@ -1,14 +1,11 @@
 name: Vend subscription (dry run)
-
 on:
   push:
     branches: [main]
     paths: ["requests/**"]
-
 permissions:
   id-token: write
-  contents: read
-
+  contents: write
 jobs:
   vend:
     runs-on: ubuntu-latest
@@ -26,3 +23,13 @@ jobs:
       - run: az account show --query "{subscription:name, loggedInAs:user.name}" -o table
       - run: az group show --name rg-lz-vending --query "{name:name, location:location}" -o table
       - run: python3 scripts/vend_dry_run.py $(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'requests/*/request.yaml')
+      - name: Create Backstage catalog cards
+        run: |
+          FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'requests/*/request.yaml')
+          if [ -z "$FILES" ]; then echo "No new requests"; exit 0; fi
+          python3 scripts/make_catalog.py $FILES
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add requests/*/catalog-info.yaml
+          git commit -m "Add Backstage catalog card"
+          git push
