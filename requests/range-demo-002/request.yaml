@@ -4,7 +4,7 @@ metadata:
   name: range-demo-002
 spec:
   applicationName: range-pricing
-  businessUnit: Range
+  businessUnit: Marketing
   environment: dev
   ownerEmail: hasnain.asad@gmail.com
   costCentre: CC-2100

@@ -3,7 +3,7 @@ import glob, re, sys, yaml
 REQUIRED = ["applicationName", "businessUnit", "environment", "ownerEmail", "costCentre",
             "justification", "targetManagementGroup", "region", "dataClassification",
             "connectivity", "estimatedMonthlySpend"]
-BUSINESS_UNITS = ["Range", "Supply Chain", "Retail Concept", "Operations"]
+BUSINESS_UNITS = ["Finance", "Human Resources", "Marketing", "Sales", "Operations", "Supply Chain", "Technology", "Data & Analytics"]
 ENVIRONMENTS = ["sandbox", "dev", "test", "prod"]
 
 failed = False

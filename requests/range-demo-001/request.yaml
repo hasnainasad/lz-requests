@@ -4,7 +4,7 @@ metadata:
   name: range-demo-001
 spec:
   applicationName: range-planner
-  businessUnit: Range
+  businessUnit: Marketing
   environment: dev
   ownerEmail: range.owner@example.com
   costCentre: CC-2100
