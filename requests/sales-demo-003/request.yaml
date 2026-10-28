@@ -1,0 +1,16 @@
+apiVersion: lz.demo/v1
+kind: AzureSubscriptionRequest
+metadata:
+  name: sales-demo-003
+spec:
+  applicationName: sales-season
+  businessUnit: Sales
+  environment: dev
+  ownerEmail: abc.def@example.com
+  costCentre: CC-2100
+  justification: "For new sales season"
+  targetManagementGroup: mg-lz-corp
+  region: swedencentral
+  dataClassification: Internal
+  connectivity: internal
+  estimatedMonthlySpend: 100
